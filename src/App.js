@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+  faCopyright,
+  faPlus,
+  faUser,
+  faUserPlus,
+} from "@fortawesome/free-solid-svg-icons";
+import { BrowserRouter as Router } from "react-router-dom";
+import Footer from "./components/Footer";
+import Nav from "./components/Nav";
+
+library.add(faPlus, faUserPlus, faUser, faCopyright);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Nav />
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
