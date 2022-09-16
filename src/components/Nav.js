@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
 const Nav = () => {
   return (
@@ -10,19 +11,21 @@ const Nav = () => {
         </div>
         <ul className="nav__menu">
           <li className="nav__menu--element">
-            <button className="nav__menu--button">
-              <FontAwesomeIcon icon="plus" className="icon plusicon" />
-              Tegyél fel egy kérdést
-            </button>
+            <Link to="/new">
+              <button className="btn">
+                <FontAwesomeIcon icon="plus" className="icon plusicon" />
+                Tegyél fel egy kérdést
+              </button>
+            </Link>
           </li>
           <li className="nav__menu--element">
-            <button className="nav__menu--button">
+            <button className="btn">
               <FontAwesomeIcon icon="user-plus" className="icon" />
               Regisztráció
             </button>
           </li>
           <li className="nav__menu--element">
-            <button className="nav__menu--button">
+            <button className="btn">
               <FontAwesomeIcon icon="user" className="icon" />
               Bejelentkezés
             </button>
