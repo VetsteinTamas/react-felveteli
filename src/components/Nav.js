@@ -19,16 +19,20 @@ const Nav = () => {
             </Link>
           </li>
           <li className="nav__menu--element">
-            <button className="btn">
-              <FontAwesomeIcon icon="user-plus" className="icon" />
-              Regisztráció
-            </button>
+            <Link to="/register">
+              <button className="btn">
+                <FontAwesomeIcon icon="user-plus" className="icon" />
+                Regisztráció
+              </button>
+            </Link>
           </li>
           <li className="nav__menu--element">
-            <button className="btn">
-              <FontAwesomeIcon icon="user" className="icon" />
-              Bejelentkezés
-            </button>
+            <Link to="/login">
+              <button className="btn">
+                <FontAwesomeIcon icon="user" className="icon" />
+                Bejelentkezés
+              </button>
+            </Link>
           </li>
         </ul>
       </div>

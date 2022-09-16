@@ -23,7 +23,9 @@ const NewQuestion = () => {
               <input type="text" className="add__label" />
               <input type="text" className="add__label" />
             </div>
-            <button className="btn form__button">Beküldés</button>
+            <button type="submit" className="btn form__button">
+              Beküldés
+            </button>
           </div>
         </form>
       </div>

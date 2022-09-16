@@ -273,3 +273,39 @@ form {
   border: 1px solid rgba(255, 255, 255, 0.5);
   font-size: 26px;
 }
+
+/*
+
+REGISTER / LOGIN
+
+*/
+
+.register__row {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  border-width: 3px;
+  border-style: solid;
+  border-image: linear-gradient(to bottom, #90e2ae, rgba(0, 0, 0, 0)) 1 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.register__label {
+  margin: 12px 0;
+}
+
+.register__input {
+  border-radius: 20px;
+  border-color: black;
+  padding: 8px 12px;
+}
+
+.register__button {
+  margin-top: 24px;
+}
+
+.switcher {
+  text-align: center;
+}
