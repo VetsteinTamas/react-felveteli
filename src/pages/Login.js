@@ -1,16 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const Login = () => {
+  let history = useHistory();
+
   const login = () => {
     let storedEmail = localStorage.getItem("email");
     let storedPassword = localStorage.getItem("password");
-    console.log(storedEmail, storedPassword);
+
     let email = document.getElementById("emailLogin");
     let password = document.getElementById("passwordLogin");
-    console.log(email, password);
 
     if (storedEmail === email.value && storedPassword === password.value) {
-      alert("logged in");
+      localStorage.setItem("isLoggedIn", true);
+      history.push("");
+      window.location.reload(false);
     } else {
       alert("Something went wrong");
     }
@@ -19,7 +22,7 @@ const Login = () => {
   return (
     <div className="container">
       <div className="register__row">
-        <form>
+        <div className="form">
           <div className="form__title">Bejelentkezés</div>
           <div className="form__area">
             <label className="register__label" htmlFor="emailLogin">
@@ -36,8 +39,8 @@ const Login = () => {
             />
             <button
               type="submit"
-              className="btn form__button register__button"
               onClick={login}
+              className="btn form__button register__button"
             >
               Bejelentkezek
             </button>
@@ -45,7 +48,7 @@ const Login = () => {
               <p className="switcher">Inkább regisztrálok</p>
             </Link>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );
