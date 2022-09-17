@@ -4,21 +4,32 @@ import { useParams } from "react-router-dom";
 const QuestionInfo = ({ questions, user }) => {
   const { id } = useParams();
   let question = questions.find((question) => +question.id === +id);
-  let questionArray = [];
+  let questionArray;
+  if (questions[id - 1]["answers"].length === 0) {
+    questionArray = [];
+  } else {
+    questionArray = questions[id - 1]["answers"];
+  }
+  console.log(questionArray);
 
   const addAnswer = () => {
-    let answer = document.getElementById("answer");
+    let answerText = document.getElementById("answer");
+    let answer = {
+      answerText: answerText.value,
+      likes: 0,
+      dislikes: 0,
+      whoAsked: user,
+    };
 
-    questionArray.push(answer.value);
+    questionArray.push(answer);
 
     let newQuestions = [...questions];
     newQuestions[id - 1]["answers"] = questionArray;
     console.log(newQuestions);
 
     localStorage.setItem("questions", JSON.stringify(newQuestions));
+    window.location.reload(false);
   };
-
-  
 
   return (
     <div className="container">
@@ -35,19 +46,22 @@ const QuestionInfo = ({ questions, user }) => {
           </div>
           <div className="form__title">{question.question}</div>
           <div className="form__area">
-            <p className="question__description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed,
-              iste. Ea incidunt ex quasi nemo, voluptate odio animi obcaecati
-              cupiditate molestiae rem fugiat minus amet nobis harum commodi
-              eaque odit?t
-            </p>
+            <p className="question__description">{question.description}</p>
           </div>
         </div>
         <div className="form__question">Válaszok</div>
         {question.answers.length === 0 ? (
           <p>Nincs válasz még</p>
         ) : (
-          <div className="form form__answers">xd</div>
+          <>
+            {question.answers.map((elem) => {
+              return (
+                <div className="form form__answers">
+                  <div>{elem.answerText}</div>
+                </div>
+              );
+            })}
+          </>
         )}
         <div className="form form__answers">
           <h3 className="answer__title">Tudod a kérdésre a választ?</h3>
