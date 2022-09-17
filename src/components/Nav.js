@@ -1,9 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 
-const Nav = ({ isLoggedIn }) => {
+const Nav = ({ isLoggedIn,user }) => {
+  
+
   const logout = () => {
     localStorage.setItem("isLoggedIn", false);
+    localStorage.setItem("loggedInUser", "");
     window.location.reload(false);
   };
 
@@ -11,7 +14,9 @@ const Nav = ({ isLoggedIn }) => {
     <nav>
       <div className="nav__container">
         <div className="logo__text--container">
-          <h2 className="logo__text">WebOrbit</h2>
+          <Link to="/" className="link__repair">
+            <h2 className="logo__text">WebOrbit</h2>
+          </Link>
           <p className="logo__text--para">kérdésbank</p>
         </div>
         <ul className="nav__menu">
@@ -24,12 +29,20 @@ const Nav = ({ isLoggedIn }) => {
             </Link>
           </li>
           {isLoggedIn == "true" ? (
-            <li className="nav__menu--element">
-              <button className="btn" onClick={logout}>
-                <FontAwesomeIcon icon="user-plus" className="icon" />
-                Kijelentkezés
-              </button>
-            </li>
+            <>
+              <li className="nav__menu--element">
+                <button className="btn user__btn">
+                  <FontAwesomeIcon icon="user-plus" className="icon" />
+                  Bejelentkezve mint <b>{user}</b>
+                </button>
+              </li>
+              <li className="nav__menu--element">
+                <button className="btn" onClick={logout}>
+                  <FontAwesomeIcon icon="user-plus" className="icon" />
+                  Kijelentkezés
+                </button>
+              </li>
+            </>
           ) : (
             <>
               <li className="nav__menu--element">

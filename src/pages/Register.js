@@ -1,21 +1,33 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const Register = () => {
+  let history = useHistory();
+
   //regisztráció
   const register = () => {
+    let users = JSON.parse(localStorage.getItem("users") || "[]");
+
     let email = document.getElementById("email");
     let password = document.getElementById("password");
-    localStorage.setItem("email", email.value);
-    localStorage.setItem("password", password.value);
+
+    let user = {
+      email: email.value,
+      password: password.value,
+    };
+
+    users.push(user);
+
+    console.log(users);
+    console.log(users.length);
+
+    localStorage.setItem("users", JSON.stringify(users));
+    history.push("/login");
   };
-
-  
-
 
   return (
     <div className="container">
       <div className="register__row">
-        <form>
+        <div className="form">
           <div className="form__title">Regisztráció</div>
           <div className="form__area">
             <label className="register__label" htmlFor="email">
@@ -42,7 +54,7 @@ const Register = () => {
               <p className="switcher">Inkább bejelentkezem</p>
             </Link>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );

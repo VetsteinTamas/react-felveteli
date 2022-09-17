@@ -4,19 +4,23 @@ const Login = () => {
   let history = useHistory();
 
   const login = () => {
-    let storedEmail = localStorage.getItem("email");
-    let storedPassword = localStorage.getItem("password");
+    let users = JSON.parse(localStorage.getItem("users"));
 
     let email = document.getElementById("emailLogin");
     let password = document.getElementById("passwordLogin");
 
-    if (storedEmail === email.value && storedPassword === password.value) {
-      localStorage.setItem("isLoggedIn", true);
-      history.push("");
-      window.location.reload(false);
-    } else {
-      alert("Something went wrong");
-    }
+    users.map((element, index) => {
+      console.log(typeof element.email, index);
+      if (
+        element.email === email.value &&
+        element.password === password.value
+      ) {
+        localStorage.setItem("isLoggedIn", true);
+        localStorage.setItem("loggedInUser", email.value);
+        history.push("");
+        window.location.reload(false);
+      }
+    });
   };
 
   return (
