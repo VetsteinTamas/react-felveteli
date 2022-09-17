@@ -1,35 +1,23 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
+import Question from "../components/Question";
 
-const AllQuestions = () => {
-  let questions = JSON.parse(localStorage.getItem("questions") || "[]");
+const AllQuestions = ({ questions }) => {
+  /* let questions = JSON.parse(localStorage.getItem("questions") || "[]"); */
 
   return (
     <div className="container">
       <div className="row">
         <div className="row__title">Minden kérdés</div>
         {questions.length === 0 ? (
-          <p>nothing</p>
+          <>
+            <p>Jelenleg nincs kérdés az adatbázisban.</p>
+            <Link to="/new">Adj hozzá egyet!</Link>
+          </>
         ) : (
-          questions.map((element) => {
-            console.log(element);
-            return (
-              <div className="question">
-                <div className="label__area">
-                  <div className="labels">
-                    <div className="label">{element.label1}</div>
-                    <div className="label">{element.label2}</div>
-                  </div>
-                  <div className="question__user">
-                    <FontAwesomeIcon icon="user" /> {element.uploader}
-                  </div>
-                </div>
-                <h1 className="question__title">{element.question}</h1>
-                <p className="question__para">
-                  <span className="counter">{element.answers.length}</span>{" "}
-                  válasz
-                </p>
-              </div>
-            );
+          questions.map((question) => {
+            console.log(question);
+            return <Question question={question} />;
           })
           /* <>
             <div className="question">

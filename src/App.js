@@ -13,10 +13,12 @@ import AllQuestions from "./pages/AllQuestions";
 import Login from "./pages/Login";
 import NewQuestion from "./pages/NewQuestion";
 import Register from "./pages/Register";
+import QuestionInfo from "./pages/QuestionInfo";
 
 library.add(faPlus, faUserPlus, faUser, faCopyright);
 
 function App() {
+  let questions = JSON.parse(localStorage.getItem("questions") || "[]");
   let user = localStorage.getItem("loggedInUser");
   let isLoggedIn = localStorage.getItem("isLoggedIn");
   console.log(isLoggedIn);
@@ -29,7 +31,12 @@ function App() {
         <Route path="/new" exact>
           <NewQuestion user={user} />
         </Route>
-        <Route path="/all" exact component={AllQuestions} />
+        <Route path="/all" exact>
+          <AllQuestions questions={questions} />
+        </Route>
+        <Route path="/questions/:id" exact>
+          <QuestionInfo questions={questions} user={user} />
+        </Route>
         <Route path="/register" exact component={Register} />
         <Route path="/login" exact component={Login} />
         <Footer />
