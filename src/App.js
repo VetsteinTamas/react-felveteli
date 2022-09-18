@@ -2,6 +2,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faCopyright,
   faPlus,
+  faThumbsUp,
   faUser,
   faUserPlus,
 } from "@fortawesome/free-solid-svg-icons";
@@ -15,7 +16,7 @@ import NewQuestion from "./pages/NewQuestion";
 import Register from "./pages/Register";
 import QuestionInfo from "./pages/QuestionInfo";
 
-library.add(faPlus, faUserPlus, faUser, faCopyright);
+library.add(faPlus, faUserPlus, faUser, faCopyright, faThumbsUp);
 
 function App() {
   let questions = JSON.parse(localStorage.getItem("questions") || "[]");

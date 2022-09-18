@@ -1,9 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 
-const Nav = ({ isLoggedIn,user }) => {
-  
-
+const Nav = ({ isLoggedIn, user }) => {
   const logout = () => {
     localStorage.setItem("isLoggedIn", false);
     localStorage.setItem("loggedInUser", "");
@@ -20,6 +18,11 @@ const Nav = ({ isLoggedIn,user }) => {
           <p className="logo__text--para">kérdésbank</p>
         </div>
         <ul className="nav__menu">
+          <li className="nav__menu--element">
+            <Link to="/all">
+              <button className="btn">Összes kérdés</button>
+            </Link>
+          </li>
           <li className="nav__menu--element">
             <Link to="/new">
               <button className="btn">

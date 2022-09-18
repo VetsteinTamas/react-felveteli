@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useParams } from "react-router-dom";
+import Answer from "../components/Answer";
 
 const QuestionInfo = ({ questions, user }) => {
   const { id } = useParams();
@@ -14,7 +15,9 @@ const QuestionInfo = ({ questions, user }) => {
 
   const addAnswer = () => {
     let answerText = document.getElementById("answer");
+    let currentId = questions[id - 1]["answers"].length + 1;
     let answer = {
+      id: currentId,
       answerText: answerText.value,
       likes: 0,
       dislikes: 0,
@@ -55,11 +58,7 @@ const QuestionInfo = ({ questions, user }) => {
         ) : (
           <>
             {question.answers.map((elem) => {
-              return (
-                <div className="form form__answers">
-                  <div>{elem.answerText}</div>
-                </div>
-              );
+              return <Answer elem={elem} id={id} user={user} questions={questions} />;
             })}
           </>
         )}

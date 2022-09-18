@@ -89,6 +89,7 @@ li:last-of-type {
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   transition: all 300ms ease;
+  font-size: 12px;
 }
 
 .user__btn {
@@ -277,7 +278,7 @@ NEW QUESTION
   border-radius: 20px;
   border-color: black;
   padding: 6px 12px;
-  width: 10%;
+  width: 25%;
 }
 
 .form__button {
@@ -358,8 +359,41 @@ QUESTION INFO
 
 #answer {
   border-radius: 20px;
+  padding: 12px;
 }
 
 .btn__answer {
   margin: 12px 0;
+}
+
+.answer__upperarea {
+  padding-bottom: 12px;
+  border-bottom: 2px solid black;
+}
+
+.answer__text {
+  padding: 12px 0 12px 12px;
+  border-bottom: 2px solid black;
+}
+
+.answer__lowerarea {
+  padding-top: 12px;
+  display: flex;
+}
+
+.like {
+  margin-right: 6px;
+}
+
+.like__this {
+  cursor: pointer;
+}
+
+.dislike__this {
+  cursor: pointer;
+  margin-left: 6px;
+}
+
+.dislike {
+  margin-left: 24px;
 }
