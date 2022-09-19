@@ -8,13 +8,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Footer from "./components/Footer";
-import Home from "./components/Home";
 import Nav from "./components/Nav";
 import AllQuestions from "./pages/AllQuestions";
 import Login from "./pages/Login";
 import NewQuestion from "./pages/NewQuestion";
 import Register from "./pages/Register";
 import QuestionInfo from "./pages/QuestionInfo";
+import ModifyQuestion from "./pages/ModifyQuestion";
 
 library.add(faPlus, faUserPlus, faUser, faCopyright, faThumbsUp);
 
@@ -28,11 +28,13 @@ function App() {
     <Router>
       <div className="App">
         <Nav isLoggedIn={isLoggedIn} user={user} />
-        <Route path="/" exact component={Home} />
         <Route path="/new" exact>
           <NewQuestion user={user} />
         </Route>
-        <Route path="/all" exact>
+        <Route path="/modify" exact>
+          <ModifyQuestion />
+        </Route>
+        <Route path="/" exact>
           <AllQuestions questions={questions} user={user} />
         </Route>
         <Route path="/questions/:id" exact>

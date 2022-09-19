@@ -1,9 +1,6 @@
-const ModifyQuestion = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+const ModifyQuestion = ({ questions }) => {
+  console.log(questions);
+  return <div></div>;
+};
 
-export default ModifyQuestion
+export default ModifyQuestion;

@@ -19,7 +19,7 @@ const Nav = ({ isLoggedIn, user }) => {
         </div>
         <ul className="nav__menu">
           <li className="nav__menu--element">
-            <Link to="/all">
+            <Link to="/">
               <button className="btn">Összes kérdés</button>
             </Link>
           </li>

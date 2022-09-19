@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useHistory, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import Answer from "../components/Answer";
 
 const QuestionInfo = ({ questions, user, isLoggedIn }) => {
@@ -49,7 +49,7 @@ const QuestionInfo = ({ questions, user, isLoggedIn }) => {
       });
       console.log(questions);
       localStorage.setItem("questions", JSON.stringify(questions));
-      history.push("/all");
+      history.push("/");
       window.location.reload(false);
     }
   };
@@ -73,7 +73,9 @@ const QuestionInfo = ({ questions, user, isLoggedIn }) => {
           </div>
           {question.uploader === user ? (
             <div className="form__lowerarea">
-              <button className="btn form__btn">Módosítás</button>
+              <Link to="/modify">
+                <button className="btn form__btn">Módosítás</button>
+              </Link>
               <button className="btn form__btn" onClick={deleteQuestion}>
                 Törlés
               </button>

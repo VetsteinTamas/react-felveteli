@@ -20,6 +20,7 @@ const NewQuestion = ({ user }) => {
     questions.push(newQuestion);
 
     localStorage.setItem("questions", JSON.stringify(questions));
+    window.location.reload(false);
   };
 
   return (
