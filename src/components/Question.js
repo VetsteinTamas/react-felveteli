@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 
-const Question = ({ question }) => {
+const Question = ({ question, user }) => {
   return (
     <>
       <Link
@@ -18,9 +18,16 @@ const Question = ({ question }) => {
           </div>
         </div>
         <h1 className="question__title">{question.question}</h1>
-        <p className="question__para">
-          <span className="counter">{question.answers.length}</span> válasz
-        </p>
+        <div className="question__lowerarea">
+          <p className="question__para">
+            <span className="counter">{question.answers.length}</span> válasz
+          </p>
+          {question.uploader === user ? (
+            <p className="wasItMe">Ez a te kérdésed.</p>
+          ) : (
+            ""
+          )}
+        </div>
       </Link>
     </>
   );

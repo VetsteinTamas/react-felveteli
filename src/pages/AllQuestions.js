@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import Question from "../components/Question";
 
-const AllQuestions = ({ questions }) => {
+const AllQuestions = ({ questions, user }) => {
   /* let questions = JSON.parse(localStorage.getItem("questions") || "[]"); */
 
   return (
@@ -16,155 +16,8 @@ const AllQuestions = ({ questions }) => {
           </>
         ) : (
           questions.map((question) => {
-            console.log(question);
-            return <Question question={question} />;
+            return <Question question={question} user={user} />;
           })
-          /* <>
-            <div className="question">
-              <div className="label__area">
-                <div className="labels">
-                  <div className="label">videojáték</div>
-                  <div className="label">szabadidő</div>
-                </div>
-                <div className="question__user">
-                  <FontAwesomeIcon icon="user" /> BalazsTheGamer00
-                </div>
-              </div>
-              <h1 className="question__title">
-                Fifa 22-be benne lesznek a mostani új nyári igazolások
-                /keretfrissítések?
-              </h1>
-              <p className="question__para">
-                <span className="counter">8</span> válasz
-              </p>
-            </div>
-            <div className="question">
-              <div className="label__area">
-                <div className="labels">
-                  <div className="label">videojáték</div>
-                  <div className="label">szabadidő</div>
-                </div>
-                <div className="question__user">
-                  <FontAwesomeIcon icon="user" /> BalazsTheGamer00
-                </div>
-              </div>
-              <h1 className="question__title">
-                Fifa 22-be benne lesznek a mostani új nyári igazolások
-                /keretfrissítések?
-              </h1>
-              <p className="question__para">
-                <span className="counter">8</span> válasz
-              </p>
-            </div>
-            <div className="question">
-              <div className="label__area">
-                <div className="labels">
-                  <div className="label">videojáték</div>
-                  <div className="label">szabadidő</div>
-                </div>
-                <div className="question__user">
-                  <FontAwesomeIcon icon="user" /> BalazsTheGamer00
-                </div>
-              </div>
-              <h1 className="question__title">
-                Fifa 22-be benne lesznek a mostani új nyári igazolások
-                /keretfrissítések?
-              </h1>
-              <p className="question__para">
-                <span className="counter">8</span> válasz
-              </p>
-            </div>
-            <div className="question">
-              <div className="label__area">
-                <div className="labels">
-                  <div className="label">videojáték</div>
-                  <div className="label">szabadidő</div>
-                </div>
-                <div className="question__user">
-                  <FontAwesomeIcon icon="user" /> BalazsTheGamer00
-                </div>
-              </div>
-              <h1 className="question__title">
-                Fifa 22-be benne lesznek a mostani új nyári igazolások
-                /keretfrissítések?
-              </h1>
-              <p className="question__para">
-                <span className="counter">8</span> válasz
-              </p>
-            </div>
-            <div className="question">
-              <div className="label__area">
-                <div className="labels">
-                  <div className="label">videojáték</div>
-                  <div className="label">szabadidő</div>
-                </div>
-                <div className="question__user">
-                  <FontAwesomeIcon icon="user" /> BalazsTheGamer00
-                </div>
-              </div>
-              <h1 className="question__title">
-                Fifa 22-be benne lesznek a mostani új nyári igazolások
-                /keretfrissítések?
-              </h1>
-              <p className="question__para">
-                <span className="counter">8</span> válasz
-              </p>
-            </div>
-            <div className="question">
-              <div className="label__area">
-                <div className="labels">
-                  <div className="label">videojáték</div>
-                  <div className="label">szabadidő</div>
-                </div>
-                <div className="question__user">
-                  <FontAwesomeIcon icon="user" /> BalazsTheGamer00
-                </div>
-              </div>
-              <h1 className="question__title">
-                Fifa 22-be benne lesznek a mostani új nyári igazolások
-                /keretfrissítések?
-              </h1>
-              <p className="question__para">
-                <span className="counter">8</span> válasz
-              </p>
-            </div>
-            <div className="question">
-              <div className="label__area">
-                <div className="labels">
-                  <div className="label">videojáték</div>
-                  <div className="label">szabadidő</div>
-                </div>
-                <div className="question__user">
-                  <FontAwesomeIcon icon="user" /> BalazsTheGamer00
-                </div>
-              </div>
-              <h1 className="question__title">
-                Fifa 22-be benne lesznek a mostani új nyári igazolások
-                /keretfrissítések?
-              </h1>
-              <p className="question__para">
-                <span className="counter">8</span> válasz
-              </p>
-            </div>
-            <div className="question">
-              <div className="label__area">
-                <div className="labels">
-                  <div className="label">videojáték</div>
-                  <div className="label">szabadidő</div>
-                </div>
-                <div className="question__user">
-                  <FontAwesomeIcon icon="user" /> BalazsTheGamer00
-                </div>
-              </div>
-              <h1 className="question__title">
-                Fifa 22-be benne lesznek a mostani új nyári igazolások
-                /keretfrissítések?
-              </h1>
-              <p className="question__para">
-                <span className="counter">8</span> válasz
-              </p>
-            </div>
-          </> */
         )}
       </div>
     </div>

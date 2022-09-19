@@ -22,7 +22,7 @@ function App() {
   let questions = JSON.parse(localStorage.getItem("questions") || "[]");
   let user = localStorage.getItem("loggedInUser");
   let isLoggedIn = localStorage.getItem("isLoggedIn");
-  console.log(isLoggedIn);
+  console.log("app:", questions);
 
   return (
     <Router>
@@ -33,10 +33,14 @@ function App() {
           <NewQuestion user={user} />
         </Route>
         <Route path="/all" exact>
-          <AllQuestions questions={questions} />
+          <AllQuestions questions={questions} user={user} />
         </Route>
         <Route path="/questions/:id" exact>
-          <QuestionInfo questions={questions} user={user} />
+          <QuestionInfo
+            questions={questions}
+            user={user}
+            isLoggedIn={isLoggedIn}
+          />
         </Route>
         <Route path="/register" exact component={Register} />
         <Route path="/login" exact component={Login} />

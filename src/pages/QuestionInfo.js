@@ -1,8 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import Answer from "../components/Answer";
 
-const QuestionInfo = ({ questions, user }) => {
+const QuestionInfo = ({ questions, user, isLoggedIn }) => {
+  let history = useHistory();
   const { id } = useParams();
   let question = questions.find((question) => +question.id === +id);
   let questionArray;
@@ -11,7 +12,8 @@ const QuestionInfo = ({ questions, user }) => {
   } else {
     questionArray = questions[id - 1]["answers"];
   }
-  console.log(questionArray);
+
+  console.log(id);
 
   const addAnswer = () => {
     let answerText = document.getElementById("answer");
@@ -34,6 +36,24 @@ const QuestionInfo = ({ questions, user }) => {
     window.location.reload(false);
   };
 
+  console.log(questions);
+
+  const deleteQuestion = () => {
+    let result = window.confirm("Biztosan törölni szeretnéd?");
+    if (result) {
+      questions.splice(id - 1, 1);
+      questions.map((item) => {
+        if (item.id > id) {
+          item.id--;
+        }
+      });
+      console.log(questions);
+      localStorage.setItem("questions", JSON.stringify(questions));
+      history.push("/all");
+      window.location.reload(false);
+    }
+  };
+
   return (
     <div className="container">
       <div className="row row__info">
@@ -51,6 +71,16 @@ const QuestionInfo = ({ questions, user }) => {
           <div className="form__area">
             <p className="question__description">{question.description}</p>
           </div>
+          {question.uploader === user ? (
+            <div className="form__lowerarea">
+              <button className="btn form__btn">Módosítás</button>
+              <button className="btn form__btn" onClick={deleteQuestion}>
+                Törlés
+              </button>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
         <div className="form__question">Válaszok</div>
         {question.answers.length === 0 ? (
@@ -58,7 +88,15 @@ const QuestionInfo = ({ questions, user }) => {
         ) : (
           <>
             {question.answers.map((elem) => {
-              return <Answer elem={elem} id={id} user={user} questions={questions} />;
+              return (
+                <Answer
+                  elem={elem}
+                  id={id}
+                  user={user}
+                  questions={questions}
+                  isLoggedIn={isLoggedIn}
+                />
+              );
             })}
           </>
         )}

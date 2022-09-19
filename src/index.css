@@ -214,6 +214,17 @@ HOME
   margin: 18px 0;
 }
 
+.question__lowerarea {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.wasItMe {
+  font-weight: 900;
+  margin-right: 12px;
+}
+
 .counter {
   background-color: #4fa78d;
   font-weight: 700;
@@ -379,6 +390,12 @@ QUESTION INFO
 .answer__lowerarea {
   padding-top: 12px;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.answer__lower--left {
+  display: flex;
 }
 
 .like {
@@ -396,4 +413,12 @@ QUESTION INFO
 
 .dislike {
   margin-left: 24px;
+}
+
+.form__lowerarea {
+  padding: 12px;
+}
+
+.form__btn {
+  margin-right: 12px;
 }
