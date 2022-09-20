@@ -1,10 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const Nav = ({ isLoggedIn, user }) => {
+  const history = useHistory();
   const logout = () => {
     localStorage.setItem("isLoggedIn", false);
     localStorage.setItem("loggedInUser", "");
+    history.push("/");
     window.location.reload(false);
   };
 
@@ -34,10 +36,12 @@ const Nav = ({ isLoggedIn, user }) => {
           {isLoggedIn == "true" ? (
             <>
               <li className="nav__menu--element">
-                <button className="btn user__btn">
-                  <FontAwesomeIcon icon="user-plus" className="icon" />
-                  Bejelentkezve mint <b>{user}</b>
-                </button>
+                <Link to="/myquestions">
+                  <button className="btn">
+                    <FontAwesomeIcon icon="user-plus" className="icon" />
+                    Bejelentkezve mint <b>{user}</b>
+                  </button>
+                </Link>
               </li>
               <li className="nav__menu--element">
                 <button className="btn" onClick={logout}>

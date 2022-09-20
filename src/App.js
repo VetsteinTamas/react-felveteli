@@ -15,6 +15,8 @@ import NewQuestion from "./pages/NewQuestion";
 import Register from "./pages/Register";
 import QuestionInfo from "./pages/QuestionInfo";
 import ModifyQuestion from "./pages/ModifyQuestion";
+import MyQuestions from "./pages/MyQuestions";
+import ModifyAnswer from "./pages/ModifyAnswer";
 
 library.add(faPlus, faUserPlus, faUser, faCopyright, faThumbsUp);
 
@@ -32,7 +34,10 @@ function App() {
           <NewQuestion user={user} />
         </Route>
         <Route path="/modify" exact>
-          <ModifyQuestion />
+          <ModifyQuestion questions={questions} />
+        </Route>
+        <Route path="/answer/:id" exact>
+          <ModifyAnswer questions={questions} user={user} />
         </Route>
         <Route path="/" exact>
           <AllQuestions questions={questions} user={user} />
@@ -43,6 +48,9 @@ function App() {
             user={user}
             isLoggedIn={isLoggedIn}
           />
+        </Route>
+        <Route path="/myquestions" exact>
+          <MyQuestions questions={questions} user={user} />
         </Route>
         <Route path="/register" exact component={Register} />
         <Route path="/login" exact component={Login} />

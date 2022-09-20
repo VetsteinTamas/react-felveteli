@@ -27,7 +27,7 @@ const Register = () => {
   return (
     <div className="container">
       <div className="register__row">
-        <div className="form">
+        <form className="form">
           <div className="form__title">Regisztráció</div>
           <div className="form__area">
             <label className="register__label" htmlFor="email">
@@ -54,7 +54,7 @@ const Register = () => {
               <p className="switcher">Inkább bejelentkezem</p>
             </Link>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );

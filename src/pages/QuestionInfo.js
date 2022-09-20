@@ -53,7 +53,6 @@ const QuestionInfo = ({ questions, user, isLoggedIn }) => {
       window.location.reload(false);
     }
   };
-
   return (
     <div className="container">
       <div className="row row__info">
@@ -73,7 +72,12 @@ const QuestionInfo = ({ questions, user, isLoggedIn }) => {
           </div>
           {question.uploader === user ? (
             <div className="form__lowerarea">
-              <Link to="/modify">
+              <Link
+                to={{
+                  pathname: "/modify",
+                  state: { theId: id },
+                }}
+              >
                 <button className="btn form__btn">Módosítás</button>
               </Link>
               <button className="btn form__btn" onClick={deleteQuestion}>
@@ -103,11 +107,19 @@ const QuestionInfo = ({ questions, user, isLoggedIn }) => {
           </>
         )}
         <div className="form form__answers">
-          <h3 className="answer__title">Tudod a kérdésre a választ?</h3>
-          <textarea name="answer" id="answer" cols="30" rows="8"></textarea>
-          <button className="btn btn__answer" onClick={addAnswer}>
-            Beküldés
-          </button>
+          {isLoggedIn === "true" ? (
+            <>
+              <h3 className="answer__title">Tudod a kérdésre a választ?</h3>
+              <textarea name="answer" id="answer" cols="30" rows="8"></textarea>
+              <button className="btn btn__answer" onClick={addAnswer}>
+                Beküldés
+              </button>
+            </>
+          ) : (
+            <h3 className="answer__title">
+              Válaszadáshoz <Link to="/login">jelentkezz be</Link>.
+            </h3>
+          )}
         </div>
       </div>
     </div>

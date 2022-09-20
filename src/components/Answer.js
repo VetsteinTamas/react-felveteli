@@ -1,8 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
 const Answer = ({ elem, id, user, questions, isLoggedIn }) => {
   let answerArray = questions[id - 1].answers;
   let getCurrentId = elem.id - 1;
+  console.log(getCurrentId);
   let likecount = questions[id - 1]["answers"][getCurrentId].likes;
   let dislikecount = questions[id - 1]["answers"][getCurrentId].dislikes;
   let updatedQuestions = [...questions];
@@ -68,7 +70,9 @@ const Answer = ({ elem, id, user, questions, isLoggedIn }) => {
         </div>
         {elem.whoAsked === user ? (
           <div className="answer__lower--right">
-            <button className="btn form__btn">Módosítás</button>
+            <Link to={`/answer/${JSON.stringify(getCurrentId)}`}>
+              <button className="btn form__btn">Módosítás</button>
+            </Link>
             <button className="btn form__btn" onClick={deleteAnswer}>
               Törlés
             </button>
