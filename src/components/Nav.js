@@ -25,16 +25,16 @@ const Nav = ({ isLoggedIn, user }) => {
               <button className="btn">Összes kérdés</button>
             </Link>
           </li>
-          <li className="nav__menu--element">
-            <Link to="/new">
-              <button className="btn">
-                <FontAwesomeIcon icon="plus" className="icon plusicon" />
-                Tegyél fel egy kérdést
-              </button>
-            </Link>
-          </li>
           {isLoggedIn == "true" ? (
             <>
+              <li className="nav__menu--element">
+                <Link to="/new">
+                  <button className="btn">
+                    <FontAwesomeIcon icon="plus" className="icon plusicon" />
+                    Tegyél fel egy kérdést
+                  </button>
+                </Link>
+              </li>
               <li className="nav__menu--element">
                 <Link to="/myquestions">
                   <button className="btn">

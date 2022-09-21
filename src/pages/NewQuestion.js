@@ -11,8 +11,7 @@ const NewQuestion = ({ user }) => {
       id: questions.length + 1,
       question: question.value,
       description: description.value,
-      label1: label1.value,
-      label2: label2.value,
+      labels: [label1.value, label2.value],
       answers: [],
       uploader: user,
     };

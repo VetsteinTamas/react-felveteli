@@ -1,11 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, useHistory, useParams } from "react-router-dom";
 import Answer from "../components/Answer";
+import Label from "../components/Label";
 
 const QuestionInfo = ({ questions, user, isLoggedIn }) => {
   let history = useHistory();
   const { id } = useParams();
   let question = questions.find((question) => +question.id === +id);
+  let labelArray = question.labels;
   let questionArray;
   if (questions[id - 1]["answers"].length === 0) {
     questionArray = [];
@@ -59,8 +61,9 @@ const QuestionInfo = ({ questions, user, isLoggedIn }) => {
         <div className="form">
           <div className="label__area label__area--info">
             <div className="labels">
-              <div className="label">{question.label1}</div>
-              <div className="label">{question.label2}</div>
+              {labelArray.map((label) => {
+                return <Label question={question} label={label} />;
+              })}
             </div>
             <div className="question__user">
               <FontAwesomeIcon icon="user" /> {question.uploader}

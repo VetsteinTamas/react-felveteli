@@ -1,7 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import Label from "./Label";
 
 const Question = ({ question, user }) => {
+  let labelArray = question.labels;
+  console.log(labelArray);
+
   return (
     <>
       <Link
@@ -10,8 +14,9 @@ const Question = ({ question, user }) => {
       >
         <div className="label__area">
           <div className="labels">
-            <div className="label">{question.label1}</div>
-            <div className="label">{question.label2}</div>
+            {labelArray.map((label) => {
+              return <Label  question={question} label={label} />;
+            })}
           </div>
           <div className="question__user">
             <FontAwesomeIcon icon="user" /> {question.uploader}

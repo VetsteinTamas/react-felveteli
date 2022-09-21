@@ -16,7 +16,9 @@ const AllQuestions = ({ questions, user }) => {
           </>
         ) : (
           questions.map((question) => {
-            return <Question question={question} user={user} />;
+            return (
+              <Question key={question.id} question={question} user={user} />
+            );
           })
         )}
       </div>

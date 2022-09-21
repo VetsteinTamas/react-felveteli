@@ -9,6 +9,7 @@ const Register = () => {
 
     let email = document.getElementById("email");
     let password = document.getElementById("password");
+    let passwordagain = document.getElementById("passwordagain");
 
     let user = {
       email: email.value,
@@ -35,7 +36,7 @@ const Register = () => {
             </label>
             <input className="register__input" type="email" id="email" />
             <label className="register__label" htmlFor="password">
-              Jelszó:
+              Jelszó (minimum <b>7</b> betű):
             </label>
             <input type="password" id="password" className="register__input" />
             <label className="register__label" htmlFor="passwordagain">
