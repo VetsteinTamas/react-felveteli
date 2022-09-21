@@ -29,8 +29,6 @@ function App() {
   let isLoggedIn = localStorage.getItem("isLoggedIn");
   console.log("app:", questions);
 
-  
-
   return (
     <Router>
       <div className="App">
@@ -58,8 +56,12 @@ function App() {
             isLoggedIn={isLoggedIn}
           />
         </Route>
-        <Route path="/register" exact component={Register} />
-        <Route path="/login" exact component={Login} />
+        <Route path="/register" exact>
+          <Register component={Register} isLoggedIn={isLoggedIn} />
+        </Route>
+        <Route path="/login" exact>
+          <Login component={Login} isLoggedIn={isLoggedIn} />
+        </Route>
         <ProtectedRoute
           path="/myquestions"
           component={MyQuestions}
@@ -70,7 +72,7 @@ function App() {
         {/* <Route path="/myquestions" exact>
           <MyQuestions questions={questions} user={user} />
         </Route> */}
-        
+
         <Footer />
       </div>
     </Router>

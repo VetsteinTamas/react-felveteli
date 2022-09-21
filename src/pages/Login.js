@@ -1,8 +1,11 @@
 import { Link, useHistory } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ isLoggedIn }) => {
   let history = useHistory();
-
+  if (isLoggedIn === "true") {
+    history.push("/myquestions");
+  }
+  
   const login = () => {
     let users = JSON.parse(localStorage.getItem("users"));
 

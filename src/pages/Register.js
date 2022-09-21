@@ -1,15 +1,18 @@
 import { Link, useHistory } from "react-router-dom";
 
-const Register = () => {
+const Register = ({ isLoggedIn }) => {
   let history = useHistory();
+  console.log(isLoggedIn);
+  if (isLoggedIn === "true") {
+    history.push("/myquestions");
+  }
 
   //regisztráció
-  const register = () => {
+  const registration = () => {
     let users = JSON.parse(localStorage.getItem("users") || "[]");
 
     let email = document.getElementById("email");
     let password = document.getElementById("password");
-    let passwordagain = document.getElementById("passwordagain");
 
     let user = {
       email: email.value,
@@ -28,7 +31,7 @@ const Register = () => {
   return (
     <div className="container">
       <div className="register__row">
-        <form className="form">
+        <form className="form" onSubmit={registration}>
           <div className="form__title">Regisztráció</div>
           <div className="form__area">
             <label className="register__label" htmlFor="email">
@@ -36,19 +39,11 @@ const Register = () => {
             </label>
             <input className="register__input" type="email" id="email" />
             <label className="register__label" htmlFor="password">
-              Jelszó (minimum <b>7</b> betű):
+              Jelszó:
             </label>
             <input type="password" id="password" className="register__input" />
-            <label className="register__label" htmlFor="passwordagain">
-              Jelszó újra:
-            </label>
-            <input type="text" id="passwordagain" className="register__input" />
 
-            <button
-              type="submit"
-              className="btn form__button register__button"
-              onClick={register}
-            >
+            <button type="submit" className="btn form__button register__button">
               Regisztrálok
             </button>
             <Link to="/login">
