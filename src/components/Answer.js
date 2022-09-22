@@ -30,9 +30,25 @@ const Answer = ({ elem, id, user, questions, isLoggedIn }) => {
         /* questions[id - 1]["answers"][getCurrentId].whoLiked.filter(
           (userEmail) => userEmail !== user
         ); */
-        if (whoLikedArray.includes(user)) {
-          questions[id - 1]["answers"][getCurrentId].whoLiked.splice(
-            questions[id - 1]["answers"][getCurrentId].whoLiked.indexOf(user),
+        questions[id - 1]["answers"][getCurrentId].whoLiked.splice(
+          questions[id - 1]["answers"][getCurrentId].whoLiked.indexOf(user),
+          1
+        );
+
+        localStorage.setItem("questions", JSON.stringify(questions));
+        window.location.reload(false);
+      } else if (whoDislikedArray.includes(user)) {
+        questions[id - 1]["answers"][getCurrentId].likes += 1;
+        answerArray[getCurrentId].whoLiked.push(user);
+        questions[id - 1]["answers"][getCurrentId].dislikes -= 1;
+        /* questions[id - 1]["answers"][getCurrentId].whoLiked.filter(
+          (userEmail) => userEmail !== user
+        ); */
+        if (whoDislikedArray.includes(user)) {
+          questions[id - 1]["answers"][getCurrentId].whoDisliked.splice(
+            questions[id - 1]["answers"][getCurrentId].whoDisliked.indexOf(
+              user
+            ),
             1
           );
         }
@@ -56,11 +72,23 @@ const Answer = ({ elem, id, user, questions, isLoggedIn }) => {
         /* questions[id - 1]["answers"][getCurrentId].whoLiked.filter(
           (userEmail) => userEmail !== user
         ); */
-        if (whoDislikedArray.includes(user)) {
-          questions[id - 1]["answers"][getCurrentId].whoDisliked.splice(
-            questions[id - 1]["answers"][getCurrentId].whoDisliked.indexOf(
-              user
-            ),
+        questions[id - 1]["answers"][getCurrentId].whoDisliked.splice(
+          questions[id - 1]["answers"][getCurrentId].whoDisliked.indexOf(user),
+          1
+        );
+
+        localStorage.setItem("questions", JSON.stringify(questions));
+        window.location.reload(false);
+      } else if (whoLikedArray.includes(user)) {
+        questions[id - 1]["answers"][getCurrentId].dislikes += 1;
+        answerArray[getCurrentId].whoDisliked.push(user);
+        questions[id - 1]["answers"][getCurrentId].likes -= 1;
+        /* questions[id - 1]["answers"][getCurrentId].whoLiked.filter(
+          (userEmail) => userEmail !== user
+        ); */
+        if (whoLikedArray.includes(user)) {
+          questions[id - 1]["answers"][getCurrentId].whoLiked.splice(
+            questions[id - 1]["answers"][getCurrentId].whoLiked.indexOf(user),
             1
           );
         }
