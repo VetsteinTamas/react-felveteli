@@ -10,10 +10,10 @@ const AllQuestions = ({ questions, user }) => {
       <div className="row">
         <div className="row__title">Minden kérdés</div>
         {questions.length === 0 ? (
-          <>
+          <div className="add__new">
             <p>Jelenleg nincs kérdés az adatbázisban.</p>
             <Link to="/new">Adj hozzá egyet!</Link>
-          </>
+          </div>
         ) : (
           questions.map((question) => {
             return (

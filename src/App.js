@@ -39,7 +39,6 @@ function App() {
         <Route path="/modify" exact>
           <ModifyQuestion questions={questions} />
         </Route>
-
         <Route path="/labels/:label" exact>
           <LabelQuestions questions={questions} user={user} />
         </Route>

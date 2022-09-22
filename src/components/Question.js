@@ -15,7 +15,7 @@ const Question = ({ question, user }) => {
         <div className="label__area">
           <div className="labels">
             {labelArray.map((label) => {
-              return <Label  question={question} label={label} />;
+              return <Label question={question} label={label} />;
             })}
           </div>
           <div className="question__user">

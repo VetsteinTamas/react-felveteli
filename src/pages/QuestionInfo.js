@@ -26,6 +26,8 @@ const QuestionInfo = ({ questions, user, isLoggedIn }) => {
       likes: 0,
       dislikes: 0,
       whoAsked: user,
+      whoLiked: [],
+      whoDisliked: [],
     };
 
     questionArray.push(answer);

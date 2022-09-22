@@ -1,7 +1,6 @@
 const NewQuestion = ({ user }) => {
   const addQuestion = () => {
     let questions = JSON.parse(localStorage.getItem("questions") || "[]");
-
     let question = document.getElementById("question");
     let description = document.getElementById("question__para");
     let label1 = document.getElementById("question__label1");
