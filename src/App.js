@@ -34,7 +34,7 @@ function App() {
       <div className="App">
         <Nav isLoggedIn={isLoggedIn} user={user} />
         <Route path="/new" exact>
-          <NewQuestion user={user} />
+          <NewQuestion user={user} isLoggedIn={isLoggedIn} />
         </Route>
         <Route path="/modify" exact>
           <ModifyQuestion questions={questions} />
