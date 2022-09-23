@@ -23,6 +23,10 @@ const Answer = ({ elem, id, user, questions, isLoggedIn }) => {
     });
   }
 
+  const saveID = () => {
+    localStorage.setItem("currentQuestionId", id);
+  };
+
   const addLike = () => {
     if (isLoggedIn === "true") {
       if (whoLikedArray.includes(user)) {
@@ -156,7 +160,9 @@ const Answer = ({ elem, id, user, questions, isLoggedIn }) => {
         {elem.whoAsked === user ? (
           <div className="answer__lower--right">
             <Link to={`/answer/${JSON.stringify(getCurrentId)}`}>
-              <button className="btn form__btn">Módosítás</button>
+              <button className="btn form__btn" onClick={saveID}>
+                Módosítás
+              </button>
             </Link>
             <button className="btn form__btn" onClick={deleteAnswer}>
               Törlés
@@ -166,7 +172,7 @@ const Answer = ({ elem, id, user, questions, isLoggedIn }) => {
           ""
         )}
       </div>
-      {whoLikedArray.length != 0 ? (
+      {whoLikedArray.length !== 0 ? (
         <div className="whoLiked">
           Ezt a választ kedveli:
           <b>{whoLikedString.substring(0, whoLikedString.length - 2)}</b>
@@ -174,7 +180,7 @@ const Answer = ({ elem, id, user, questions, isLoggedIn }) => {
       ) : (
         ""
       )}
-      {whoDislikedArray.length != 0 ? (
+      {whoDislikedArray.length !== 0 ? (
         <div className="whoLiked">
           Ezt a választ nem kedveli:
           <b>{whoDislikedString.substring(0, whoDislikedString.length - 2)}</b>

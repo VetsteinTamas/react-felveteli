@@ -1,9 +1,26 @@
-import { useHistory, useLocation, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 const ModifyAnswer = ({ questions }) => {
+  const history = useHistory();
   const { id } = useParams();
-  console.log(questions);
-  console.log(id);
+  const questionIDstring = localStorage.getItem("currentQuestionId");
+  const questionID = Number(questionIDstring) - 1;
+  let answer = questions[questionID]["answers"][id]["answerText"];
+  console.log(answer);
+
+  const modifyAnswer = () => {
+    let answerText = document.getElementById("answer");
+
+    if (answerText.value !== "") {
+      questions[questionID]["answers"][id]["answerText"] = answerText.value;
+      console.log(questions);
+      localStorage.setItem("questions", JSON.stringify(questions));
+      history.push(`/questions/${questionID + 1}`);
+      localStorage.removeItem("currentQuestionId");
+      window.location.reload(false);
+    }
+  };
+
   return (
     <div className="container">
       <div className="register__row">
@@ -21,7 +38,11 @@ const ModifyAnswer = ({ questions }) => {
               /* placeholder={question.description} */
               id="answer"
             ></textarea>
-            <button type="submit" className="btn form__button">
+            <button
+              type="submit"
+              onClick={modifyAnswer}
+              className="btn form__button"
+            >
               Beküldés
             </button>
           </div>
