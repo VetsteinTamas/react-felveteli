@@ -19,10 +19,11 @@ const ModifyQuestion = ({ questions }) => {
       label1Value.value !== "" &&
       label2Value.value !== ""
     ) {
+      questions[theId - 1].labels = [];
       questions[theId - 1].question = questionValue.value;
       questions[theId - 1].description = descriptionValue.value;
-      questions[theId - 1].label1 = label1Value.value;
-      questions[theId - 1].label2 = label2Value.value;
+      questions[theId - 1].labels.push(label1Value.value);
+      questions[theId - 1].labels.push(label2Value.value);
 
       localStorage.setItem("questions", JSON.stringify(questions));
       history.push("/");

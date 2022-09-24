@@ -3,6 +3,15 @@ import { Link, useHistory } from "react-router-dom";
 
 const Nav = ({ isLoggedIn, user }) => {
   const history = useHistory();
+
+  function openMenu() {
+    document.body.classList += " menu--open";
+  }
+
+  function closeMenu() {
+    document.body.classList.remove("menu--open");
+  }
+
   const logout = () => {
     localStorage.setItem("isLoggedIn", false);
     localStorage.setItem("loggedInUser", "");
@@ -49,6 +58,9 @@ const Nav = ({ isLoggedIn, user }) => {
                   Kijelentkezés
                 </button>
               </li>
+              <button className="btn__menu" onClick={openMenu}>
+                <FontAwesomeIcon icon="bars" />
+              </button>
             </>
           ) : (
             <>
@@ -68,9 +80,72 @@ const Nav = ({ isLoggedIn, user }) => {
                   </button>
                 </Link>
               </li>
+              <button className="btn__menu" onClick={openMenu}>
+                <FontAwesomeIcon icon="bars" />
+              </button>
             </>
           )}
         </ul>
+        <div className="menu__backdrop">
+          <button className="btn__menu btn__menu--close" onClick={closeMenu}>
+            <FontAwesomeIcon icon="times" />
+          </button>
+          {isLoggedIn === "true" ? (
+            <ul className="menu__links">
+              <li className="menu__list">
+                <Link to="/" className="menu__link">
+                  <button className="btn">Összes kérdés</button>
+                </Link>
+              </li>
+              <li className="menu__list">
+                <Link to="/new" className="menu__link">
+                  <button className="btn">
+                    <FontAwesomeIcon icon="plus" className="icon plusicon" />
+                    Tegyél fel egy kérdést
+                  </button>
+                </Link>
+              </li>
+              <li className="menu__list">
+                <Link to="/myquestions" className="menu__link">
+                  <button className="btn">
+                    <FontAwesomeIcon icon="user-plus" className="icon" />
+                    Bejelentkezve mint <b>{user}</b>
+                  </button>
+                </Link>
+              </li>
+              <li className="menu__list">
+                <button className="btn" onClick={logout}>
+                  <FontAwesomeIcon icon="user-plus" className="icon" />
+                  Kijelentkezés
+                </button>
+              </li>
+            </ul>
+          ) : (
+            <ul className="menu__links">
+              <li className="menu__list">
+                <Link to="/" className="menu__link">
+                  <button className="btn">Összes kérdés</button>
+                </Link>
+              </li>
+              <li className="menu__list">
+                <Link to="/register" className="menu__link">
+                  <button className="btn">
+                    <FontAwesomeIcon icon="user-plus" className="icon" />
+                    Regisztráció
+                  </button>
+                </Link>
+              </li>
+              <li className="menu__list">
+                <Link to="/login" className="menu__link">
+                  <button className="btn">
+                    <FontAwesomeIcon icon="user" className="icon" />
+                    Bejelentkezés
+                  </button>
+                </Link>
+              </li>
+            </ul>
+          )}
+        </div>
       </div>
     </nav>
   );

@@ -5,6 +5,8 @@ import {
   faThumbsUp,
   faUser,
   faUserPlus,
+  faBars,
+  faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
@@ -21,7 +23,15 @@ import ModifyAnswer from "./pages/ModifyAnswer";
 import LabelQuestions from "./pages/LabelQuestions";
 import ProtectedRoute from "./ProtectedRoute";
 
-library.add(faPlus, faUserPlus, faUser, faCopyright, faThumbsUp);
+library.add(
+  faPlus,
+  faUserPlus,
+  faUser,
+  faCopyright,
+  faThumbsUp,
+  faBars,
+  faTimes
+);
 
 function App() {
   let questions = JSON.parse(localStorage.getItem("questions") || "[]");
