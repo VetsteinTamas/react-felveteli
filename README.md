@@ -32,6 +32,6 @@ Projekt specifikaciók:
 - Felhasználókezelés (opcionális)
 - Kérdések hozzáadása, módosítása, törlése illetve megtekintése (összes, saját, címkézett)
 - Kérdések megválaszolása, valamint a kérdések kedvelése, nem kedvelése, módosítása és törlése
-- Kérdések címkézése
+- Kérdések címkézése (opcionális)
 
 
