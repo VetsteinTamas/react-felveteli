@@ -35,7 +35,7 @@ const ModifyAnswer = ({ questions }) => {
               className="form__textarea"
               cols="30"
               rows="7"
-              /* placeholder={question.description} */
+              placeholder={answer}
               id="answer"
             ></textarea>
             <button
