@@ -13,6 +13,8 @@ Feladatom egy GYIK (gyakran ismételt kérdések) weboldal létrehozása volt Re
 
 Szükség van a `node` és `npm` csomagokra a folytatáshoz.
 
+A fájlokat tartalmazó mappát le kell tölteni, és ki kell csomagolni. Az alábbi műveleteket ezen a mappán kell elvégezni terminálban.
+
 Instaláció:
 
 `npm install`
