@@ -55,5 +55,3 @@ Ha a navigációs felületen a saját emailünkre kattintunk, akkor csak az ált
 ## Értékelés
 
 Egy érdekes, de komoly kihívásnak tartottam ezt a projektet, mivel ténylegesen tesztelhettem a react tudásomat. A localStorage-el való munka tökéletesen próbára tette a JavaScript tudásom, mivel rengetegszer kellett tömbökkel dolgoznom. Az adatok zömének indexet kellett adnom ahhoz, hogy betudjam azonosítani és tudjak velük dolgozni. A fő kihívásom a válasz módosítás komponens volt, ahol egyszerre kellett megadnom a kérdés és a válasz indexét is, hogy tudjak vele dolgozni. Eleinte nem nagyon tudtam rájönni, hogy hogyan is tudnám átadni neki az azonosítokat, de végül useProps és localStorage-el sikerült megoldanom. Kedvenc részem a tetszik/nem tetszik szekció létrehozása volt a válaszoknál, ahol sok JavaScript kódot kellett írnom, de végül sikerült megoldanom.
-
-Köszönöm szépen a WebOrbit csapatának a kihívást és a lehetőséget.
